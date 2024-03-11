@@ -1,6 +1,7 @@
 package com.gguilhermelopes.movieSphere.controllers;
 
 import com.gguilhermelopes.movieSphere.domain.Genre;
+import com.gguilhermelopes.movieSphere.dto.GenreDTO;
 import com.gguilhermelopes.movieSphere.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,9 @@ public class GenreController {
     private GenreService service;
 
     @GetMapping
-    public ResponseEntity<List<Genre>> findAll(){
-        List<Genre> genreList = service.findAll();
+    public ResponseEntity<List<GenreDTO>> findAll(){
+
+        List<GenreDTO> genreList = service.findAll();
         return ResponseEntity.ok(genreList);
     }
 }
