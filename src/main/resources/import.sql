@@ -1,0 +1,18 @@
+INSERT INTO genre(id, name) VALUES ('98999055-08f3-4888-9ed3-ed31c38ffbe6', 'Action');
+INSERT INTO genre(id, name) VALUES ('92e5e3a1-5267-4a7d-8c7d-2c5b7c67c0b5', 'Adventure');
+INSERT INTO genre(id, name) VALUES ('e3079a4d-3cb1-4e0e-8399-0eaf53d0e0f9', 'Animation');
+INSERT INTO genre(id, name) VALUES ('7f1f7f3c-4b6b-4b6b-991a-1a01b1b1c2c9', 'Comedy');
+INSERT INTO genre(id, name) VALUES ('8c4b49da-91f8-42c3-84bf-d5d1a62d0c1d', 'Crime');
+INSERT INTO genre(id, name) VALUES ('a2a4bc0c-4294-4e01-809b-cd7dce0f6d64', 'Documentary');
+INSERT INTO genre(id, name) VALUES ('ec075f4a-75bd-4ef4-bb7e-3f80d10a9c11', 'Drama');
+INSERT INTO genre(id, name) VALUES ('f5062d5a-43f4-4b9b-8232-5616b1bd4c95', 'Family');
+INSERT INTO genre(id, name) VALUES ('fb5319b3-3445-4c64-b9f0-72649317e510', 'Fantasy');
+INSERT INTO genre(id, name) VALUES ('1d3c6ec4-2ba6-4a7a-9257-78a4d9e62d07', 'History');
+INSERT INTO genre(id, name) VALUES ('712f71cd-bb10-470a-a9a8-650e5c28fe5b', 'Horror');
+INSERT INTO genre(id, name) VALUES ('4a982995-01d2-4084-9d39-3c508b173174', 'Musical');
+INSERT INTO genre(id, name) VALUES ('e4c1d8de-55a2-4f04-9e23-69e428cc5e5e', 'Mystery');
+INSERT INTO genre(id, name) VALUES ('9dbef1b5-1b2d-42ae-b98e-228607f899fb', 'Romance');
+INSERT INTO genre(id, name) VALUES ('b9a843b7-37e1-4d68-88e9-56aaee16a7ae', 'Science Fiction');
+INSERT INTO genre(id, name) VALUES ('5c0e5a1d-0cb9-4cf7-95e1-3949de646b54', 'Thriller');
+INSERT INTO genre(id, name) VALUES ('85a0d380-0595-478b-9d61-2e4c0b6475b9', 'War');
+INSERT INTO genre(id, name) VALUES ('b0c143c2-50a4-4eb9-b0c8-394aa6c3c9d1', 'Western');
