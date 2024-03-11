@@ -1,6 +1,8 @@
 package com.gguilhermelopes.movieSphere.controllers;
 
 import com.gguilhermelopes.movieSphere.domain.Genre;
+import com.gguilhermelopes.movieSphere.services.GenreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +15,12 @@ import java.util.List;
 @RequestMapping(value = "/genres")
 public class GenreController {
 
+    @Autowired
+    private GenreService service;
+
     @GetMapping
     public ResponseEntity<List<Genre>> findAll(){
-        List<Genre> genreList = new ArrayList<>();
-        genreList.add(new Genre("1", "Terror"));
-        genreList.add(new Genre("2", "Sci-Fi"));
-        genreList.add(new Genre("3", "Drama"));
-
+        List<Genre> genreList = service.findAll();
         return ResponseEntity.ok(genreList);
     }
 }
