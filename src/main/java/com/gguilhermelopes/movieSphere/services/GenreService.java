@@ -31,4 +31,13 @@ public class GenreService {
 
         return new GenreDTO(genre);
     }
+
+    @Transactional
+    public GenreDTO insert(GenreDTO data) {
+        Genre genre = new Genre();
+        genre.setName(data.name());
+        genre = repository.save(genre);
+
+        return new GenreDTO(genre);
+    }
 }
