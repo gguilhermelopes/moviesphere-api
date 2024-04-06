@@ -41,4 +41,13 @@ public class GenreController {
 
         return ResponseEntity.created(uri).body(data);
     }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<GenreDTO> update(@PathVariable UUID id, @RequestBody GenreDTO data){
+        data = service.update(id, data);
+
+        return ResponseEntity.ok(data);
+    }
+
+
 }

@@ -1,6 +1,6 @@
 package com.gguilhermelopes.movieSphere.infra;
 
-import com.gguilhermelopes.movieSphere.infra.exceptions.EntityNotFoundException;
+import com.gguilhermelopes.movieSphere.infra.exceptions.DataNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,8 @@ import java.time.Instant;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<StandardException> entityNotFound(EntityNotFoundException exception, HttpServletRequest request){
+    @ExceptionHandler(DataNotFoundException.class)
+    public ResponseEntity<StandardException> entityNotFound(DataNotFoundException exception, HttpServletRequest request){
         StandardException error = new StandardException();
         error.setTimestamp(Instant.now());
         error.setStatus(HttpStatus.NOT_FOUND.value());
