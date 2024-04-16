@@ -16,7 +16,7 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(DataNotFoundException.class)
     public ResponseEntity<StandardException> entityNotFound(DataNotFoundException exception, HttpServletRequest request){
         HttpStatus status = HttpStatus.NOT_FOUND;
-        
+
         StandardException error = new StandardException();
         error.setTimestamp(Instant.now());
         error.setStatus(status.value());
