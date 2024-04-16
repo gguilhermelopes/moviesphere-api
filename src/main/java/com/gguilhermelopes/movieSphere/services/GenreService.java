@@ -3,10 +3,13 @@ package com.gguilhermelopes.movieSphere.services;
 import com.gguilhermelopes.movieSphere.domain.Genre;
 import com.gguilhermelopes.movieSphere.dto.GenreDTO;
 import com.gguilhermelopes.movieSphere.infra.exceptions.DataNotFoundException;
+import com.gguilhermelopes.movieSphere.infra.exceptions.DatabaseException;
 import com.gguilhermelopes.movieSphere.repositories.GenreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -53,5 +56,18 @@ public class GenreService {
         catch (EntityNotFoundException exception) {
             throw new DataNotFoundException("Gênero não encontrado para o ID informado.");
         }
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    public void delete(UUID id) {
+        if(!repository.existsById(id)){
+            throw new DataNotFoundException("Gênero não encontrado para o ID informado.");
+        }
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException exception){
+            throw new DatabaseException("Falha de integridade referencial");
+        }
+
     }
 }
