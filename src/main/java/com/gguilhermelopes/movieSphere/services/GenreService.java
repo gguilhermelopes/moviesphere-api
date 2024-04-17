@@ -8,6 +8,8 @@ import com.gguilhermelopes.movieSphere.repositories.GenreRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +28,11 @@ public class GenreService {
     public List<GenreDTO> findAll(){
         List<Genre> genreList = repository.findAll();
         return genreList.stream().map(GenreDTO::new).toList();
+    }
+
+    public Page<GenreDTO> findAllPaged(PageRequest pageRequest) {
+        Page<Genre> pagedGenreList = repository.findAll(pageRequest);
+        return pagedGenreList.map(GenreDTO::new);
     }
 
     @Transactional(readOnly = true)
@@ -70,4 +77,6 @@ public class GenreService {
         }
 
     }
+
+
 }
