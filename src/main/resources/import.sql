@@ -16,3 +16,15 @@ INSERT INTO genre(id, name, created_At) VALUES ('b9a843b7-37e1-4d68-88e9-56aaee1
 INSERT INTO genre(id, name, created_At) VALUES ('5c0e5a1d-0cb9-4cf7-95e1-3949de646b54', 'Thriller', NOW());
 INSERT INTO genre(id, name, created_At) VALUES ('85a0d380-0595-478b-9d61-2e4c0b6475b9', 'War', NOW());
 INSERT INTO genre(id, name, created_At) VALUES ('b0c143c2-50a4-4eb9-b0c8-394aa6c3c9d1', 'Western', NOW());
+
+INSERT INTO movie(id, name, release_Year, director, synopsis, img_Url, rating) VALUES('91c01ffe-28e0-4c3d-a904-b9c9d5b55877','The Godfather', 1972,'Francis Ford Coppola','Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.','https://a.ltrbxd.com/resized/film-poster/5/1/8/1/8/51818-the-godfather-0-1000-0-1500-crop.jpg?v=bca8b67402', 4.6);
+INSERT INTO movie(id, name, release_Year, director, synopsis, img_Url, rating) VALUES('5eba0494-22a0-4a47-85df-25806d7dc4a6','Dune: Part Two', 2024,'Denis Villeneuve','Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.','https://a.ltrbxd.com/resized/film-poster/6/1/7/4/4/3/617443-dune-part-two-0-1000-0-1500-crop.jpg?v=cc533700f8', 4.5);
+
+INSERT INTO movie_genre (movie_id, genre_id) VALUES ('91c01ffe-28e0-4c3d-a904-b9c9d5b55877', 'ec075f4a-75bd-4ef4-bb7e-3f80d10a9c11');
+INSERT INTO movie_genre (movie_id, genre_id) VALUES ('91c01ffe-28e0-4c3d-a904-b9c9d5b55877', '8c4b49da-91f8-42c3-84bf-d5d1a62d0c1d');
+INSERT INTO movie_genre (movie_id, genre_id) VALUES ('5eba0494-22a0-4a47-85df-25806d7dc4a6', 'ec075f4a-75bd-4ef4-bb7e-3f80d10a9c11');
+INSERT INTO movie_genre (movie_id, genre_id) VALUES ('5eba0494-22a0-4a47-85df-25806d7dc4a6', 'b9a843b7-37e1-4d68-88e9-56aaee16a7ae');
+INSERT INTO movie_genre (movie_id, genre_id) VALUES ('5eba0494-22a0-4a47-85df-25806d7dc4a6', '92e5e3a1-5267-4a7d-8c7d-2c5b7c67c0b5');
+
+
+

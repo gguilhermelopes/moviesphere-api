@@ -14,22 +14,19 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
-public class Genre implements Serializable {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @EqualsAndHashCode.Include
     private UUID id;
-    @EqualsAndHashCode.Exclude
     private String name;
     @Setter(AccessLevel.NONE)
-    @EqualsAndHashCode.Exclude
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant createdAt;
     @Setter(AccessLevel.NONE)
-    @EqualsAndHashCode.Exclude
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant updatedAt;
-
     @PrePersist
     public void prePersist(){
         createdAt = Instant.now();
