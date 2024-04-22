@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,8 +36,8 @@ public class MovieService {
         return movieList.stream().map(MovieDTO::new).toList();
     }
 
-    public Page<MovieDTO> findAllPaged(PageRequest pageRequest) {
-        Page<Movie> pagedMovieList = repository.findAll(pageRequest);
+    public Page<MovieDTO> findAllPaged(Pageable pageable) {
+        Page<Movie> pagedMovieList = repository.findAll(pageable);
         return pagedMovieList.map(MovieDTO::new);
     }
 

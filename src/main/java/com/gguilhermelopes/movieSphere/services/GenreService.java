@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,8 +31,8 @@ public class GenreService {
         return genreList.stream().map(GenreDTO::new).toList();
     }
 
-    public Page<GenreDTO> findAllPaged(PageRequest pageRequest) {
-        Page<Genre> pagedGenreList = repository.findAll(pageRequest);
+    public Page<GenreDTO> findAllPaged(Pageable pageable) {
+        Page<Genre> pagedGenreList = repository.findAll(pageable);
         return pagedGenreList.map(GenreDTO::new);
     }
 
