@@ -1,9 +1,11 @@
 package com.gguilhermelopes.movieSphere.services;
 
+import com.gguilhermelopes.movieSphere.domain.Genre;
 import com.gguilhermelopes.movieSphere.domain.Movie;
 import com.gguilhermelopes.movieSphere.dto.MovieDTO;
 import com.gguilhermelopes.movieSphere.infra.exceptions.DataNotFoundException;
 import com.gguilhermelopes.movieSphere.infra.exceptions.DatabaseException;
+import com.gguilhermelopes.movieSphere.repositories.GenreRepository;
 import com.gguilhermelopes.movieSphere.repositories.MovieRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class MovieService {
 
     @Autowired
     private MovieRepository repository;
+
+    @Autowired
+    private GenreRepository genreRepository;
 
     @Transactional(readOnly = true)
     public List<MovieDTO> findAll(){
@@ -46,17 +51,18 @@ public class MovieService {
     @Transactional
     public MovieDTO insert(MovieDTO data) {
         Movie movie = new Movie();
-        //genre.setName(data.name());
+        dataToMovie(data, movie);
         movie = repository.save(movie);
 
         return new MovieDTO(movie);
     }
 
+
     @Transactional
     public MovieDTO update(UUID id, MovieDTO data) {
         try {
             Movie movie = repository.getReferenceById(id);
-           //genre.setName(data.name());
+            dataToMovie(data, movie);
             movie = repository.save(movie);
             return new MovieDTO(movie);
         }
@@ -77,6 +83,24 @@ public class MovieService {
         }
 
     }
+
+    private void dataToMovie(MovieDTO data, Movie movie) {
+        movie.setName(data.name());
+        movie.setReleaseYear(data.releaseYear());
+        movie.setDirector(data.director());
+        movie.setSynopsis(data.synopsis());
+        movie.setImgUrl(data.imgUrl());
+        movie.setRating(data.rating());
+
+
+        movie.getGenres().clear();
+        data.genres().forEach(genreDTO -> {
+                Genre genre = genreRepository.getReferenceById(genreDTO.id());
+                movie.getGenres().add(genre);
+        });
+
+    }
+
 
 
 }
