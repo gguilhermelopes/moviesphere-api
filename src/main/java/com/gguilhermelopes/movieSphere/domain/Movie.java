@@ -3,7 +3,6 @@ package com.gguilhermelopes.movieSphere.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Year;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -33,4 +32,6 @@ public class Movie {
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genre> genres = new HashSet<>();
+
+
 }

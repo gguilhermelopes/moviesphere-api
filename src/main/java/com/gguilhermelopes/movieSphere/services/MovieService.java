@@ -68,14 +68,14 @@ public class MovieService {
             return new MovieDTO(movie);
         }
         catch (EntityNotFoundException exception) {
-            throw new DataNotFoundException("Gênero não encontrado para o ID informado.");
+            throw new DataNotFoundException("Filme não encontrado para o ID informado.");
         }
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(UUID id) {
         if(!repository.existsById(id)){
-            throw new DataNotFoundException("Gênero não encontrado para o ID informado.");
+            throw new DataNotFoundException("Filme não encontrado para o ID informado.");
         }
         try {
             repository.deleteById(id);
