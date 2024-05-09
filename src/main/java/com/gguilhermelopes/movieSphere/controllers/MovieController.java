@@ -33,9 +33,6 @@ public class MovieController {
     @GetMapping(value = "/paged")
     public ResponseEntity<Page<MovieDTO>> findAllPaged(Pageable pageable){
 
-
-
-
         Page<MovieDTO> movieList = service.findAllPaged(pageable);
         return ResponseEntity.ok(movieList);
     }
@@ -44,8 +41,9 @@ public class MovieController {
     public ResponseEntity<MovieDTO> findById(@PathVariable UUID id){
 
       MovieDTO movie = service.findById(id);
-        return ResponseEntity.ok(movie);
+      return ResponseEntity.ok(movie);
     }
+
     @PostMapping
     public ResponseEntity<MovieDTO> insert(@RequestBody MovieDTO data){
         data = service.insert(data);
